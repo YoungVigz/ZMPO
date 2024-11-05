@@ -9,8 +9,87 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Fira Code", serif;
 }
 
 body {
     background-color: var(--primary);
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--contrast);
+}
+
+.utils {
+    position: absolute;
+    bottom: 3.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    border: 3px solid #000;
+    border-radius: 5px;
+    padding: 15px;
+
+    counter-reset: count;
+}
+
+.util {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #a1a1a1;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: 0.5s ease;
+}
+
+.util:last-child {
+    margin: 0;
+}
+
+.util::after {
+    content: counter(count);
+    counter-increment: count;
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+    font-size: 13px;
+    color: #a1a1a1;
+}
+
+.util:hover {
+    border: 1px solid #000;
+}
+
+i {
+    font-size: 24px; 
+}
+
+
+.support {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+      display: none;
+    }
+
+    .support {
+        display: block;
+        color: white;
+    }
 }
