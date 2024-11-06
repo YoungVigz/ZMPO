@@ -74,6 +74,18 @@ canvas {
     border: 1px solid #000;
 }
 
+.util:hover::after {
+    color: #000;
+}
+
+.util-select {
+    border: 1px solid #000;
+}
+
+.util-select::after {
+    color: #000;
+}
+
 i {
     font-size: 24px; 
 }
