@@ -20,6 +20,8 @@ export class UtilsConfig {
     utils = []
     currentUtil = null
     currentUtilType = null
+    
+    utilsSettings = document.querySelector(".utils-settings")
 
     /**
      * Constructor
@@ -43,11 +45,37 @@ export class UtilsConfig {
         this.currentUtil = this.utils[0].util
         this.currentUtilType = this.utils[0].type
 
+        const penSettings = this.utilsSettings.querySelector("#pen")
+        penSettings.classList.add("active-settings")
+
         this.#bindUtils()
 
         UtilsConfig.instance = this
 
         return this
+    }
+
+     /**
+     * Toggles the visibility of settings for the currently selected tool.
+     * 
+     * This method iterates over all child elements of `utilsSettings` to find 
+     * the element corresponding to `currentUtilType`. It removes the "active-settings" 
+     * class from any previously active settings and applies it to the matching 
+     * child element based on `currentUtilType`. This ensures that only the 
+     * settings for the active tool are visible in the toolbar.
+     */
+    #makeUtilSettingsVisible() {
+        const childs = this.utilsSettings.children
+
+        for(let i = 0; i < childs.length; i++) {
+            if(childs[i].classList.contains("active-settings")) {
+                childs[i].classList.remove("active-settings")
+            }
+
+            if(childs[i].id == `${this.currentUtilType}`) {
+                childs[i].classList.add("active-settings")
+            }
+        }
     }
 
     /**
@@ -59,8 +87,14 @@ export class UtilsConfig {
     #changeUtil(util) {
         this.currentUtil.classList.remove('util-select')
         util.classList.add('util-select')
+
+        let lastType = this.currentUtilType
         this.currentUtil = util
         this.currentUtilType = util.dataset.type
+
+        if(lastType != this.currentUtilType) {
+            this.#makeUtilSettingsVisible()
+        }
     }
 
     /**
