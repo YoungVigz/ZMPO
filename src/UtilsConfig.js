@@ -23,6 +23,8 @@ export class UtilsConfig {
     
     utilsSettings = document.querySelector(".utils-settings")
 
+    observers = []
+
     /**
      * Constructor
      * Initializes the UtilsConfig with a list of DOM elements (utils) and binds event listeners.
@@ -53,6 +55,22 @@ export class UtilsConfig {
         UtilsConfig.instance = this
 
         return this
+    }
+
+
+    /**
+     * Adds an observer to the observers list
+     * @param {Function} observer - The function that will be called whenever `currentUtilType` changes.
+     */
+    addObserver(observer) {
+        this.observers.push(observer)
+    }
+
+    /**
+     * Notifies all observers of the change in `currentUtilType`.
+     */
+    #notifyObservers() {
+        this.observers.forEach(observer => observer(this.currentUtilType))
     }
 
      /**
@@ -94,6 +112,7 @@ export class UtilsConfig {
 
         if(lastType != this.currentUtilType) {
             this.#makeUtilSettingsVisible()
+            this.#notifyObservers()
         }
     }
 
@@ -128,14 +147,5 @@ export class UtilsConfig {
             throw new Error('UtilsConfig has not been initialized. Please create an instance first.')
         }
         return UtilsConfig.instance
-    }
-
-    /**
-     * Get the current active tool's type.
-     * 
-     * @returns {string} The type of the currently active tool.
-     */
-    getCurrentUtilType() {
-        return this.currentUtilType
     }
 }

@@ -1,4 +1,4 @@
-import { UtilsConfig } from "./UtilsConfig.js";
+import { Canvas } from "./Canvas.js";
 
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
@@ -6,23 +6,16 @@ const ctx = canvas.getContext("2d")
 canvas.width = canvas.offsetWidth
 canvas.height = canvas.offsetHeight
 
-const utils = document.querySelectorAll(".util")
-const utilsConfig = new UtilsConfig(utils)
+const drawingCanvas = new Canvas(ctx)
 
-let test = UtilsConfig.getInstance()
 
-console.log(test)
-
-ctx.strokeStyle = 'black'
-ctx.lineWidth = 50
-ctx.lineCap = 'round'
 
 let isDrawing = false
 
 function startDrawing(e) {
     isDrawing = true
     ctx.beginPath()
-    ctx.lineWidth = 2
+    ctx.lineWidth = 50
 }
 
 function draw(e) {
