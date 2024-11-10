@@ -1,8 +1,8 @@
 :root {
-    --primary: #11120D;
-    --secondary: #D8CFBC;
-    --accent: #565449;
-    --contrast: #FFFBF4;
+    --primary: #71C9CE;
+    --secondary: #53a3aa;
+    --accent: #CBF1F5;
+    --contrast: #E3FDFD;
 }
 
 * {
@@ -19,26 +19,28 @@ body {
 .container {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 canvas {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--contrast);
+    width: 960px;
+    height: 540px;
+    background-color: white;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 35px 50px 0px rgba(66, 68, 90, 0.43);
+    -moz-box-shadow: 0px 35px 50px 0px rgba(66, 68, 90, 0.43);
+    box-shadow: 0px 35px 50px 0px rgba(66, 68, 90, 0.43);
 }
 
 .utils {
-    position: absolute;
-    bottom: 3.5%;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    justify-content: center;
-    border: 3px solid #000;
+    border: 3px solid var(--secondary);
     border-radius: 5px;
     padding: 15px;
-
+    margin-bottom: 15px;
     counter-reset: count;
 }
 
@@ -49,7 +51,7 @@ canvas {
     align-items: center;
     width: 50px;
     height: 50px;
-    border: 2px solid #a1a1a1;
+    border: 2px solid var(--accent);
     border-radius: 5px;
     cursor: pointer;
     margin-right: 15px;
@@ -67,27 +69,45 @@ canvas {
     bottom: 0;
     right: 2px;
     font-size: 13px;
-    color: #a1a1a1;
+    color: var(--accent);
 }
 
 .util:hover {
-    border: 1px solid #000;
+    border: 1px solid var(--secondary);
+}
+
+.util:hover i {
+    color: var(--secondary);
 }
 
 .util:hover::after {
-    color: #000;
+    color: var(--secondary);
 }
 
 .util-select {
-    border: 1px solid #000;
+    border: 1px solid var(--secondary);
+}
+
+.util-select i {
+    color: var(--secondary);
 }
 
 .util-select::after {
-    color: #000;
+    color: var(--secondary);
 }
 
 i {
     font-size: 24px; 
+    color: var(--contrast);
+}
+
+
+.settings {
+    display: none;
+}
+
+.active-settings {
+    display: block;
 }
 
 
@@ -95,13 +115,19 @@ i {
     display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) or (max-height: 540px) {
     .container {
-      display: none;
+        display: none;
     }
 
     .support {
-        display: block;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        font-size: 38px;
+        text-align: center;
         color: white;
     }
 }

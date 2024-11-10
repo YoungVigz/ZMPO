@@ -12,7 +12,20 @@
 </head>
 <body>
     <div class="container">
-        <canvas></canvas>
+
+        <div class="utils-settings">
+            <div class="settings" id="pen">
+                <label for="pen-size">Size:</label>
+                <input type="range" min="1" max="10" value="5" id="pen-size">
+                
+                <label for="pen-color">Color:</label>
+                <input type="color" value="#000000" id="pen-color">
+            </div>
+
+            <div class="settings" id="line">
+                line settings
+            </div>
+        </div>
 
         <div class="utils">
             <div class="util util-select" data-type="pen">
@@ -28,10 +41,12 @@
                 <i class="fa-solid fa-video"></i>
             </div>
         </div>
+
+        <canvas></canvas>
     </div> 
 
     <div class="support">
-        Aplikacja nie obsługuje urządzeń mobilnych
+        This app doesn't support devices which are less than 960px x 540px 
     </div>
 
     <script src="./src/index.js" type="module"></script>

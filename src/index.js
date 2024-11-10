@@ -1,7 +1,10 @@
-import { UtilsConfig } from "./UtilsConfig.js";
+import { Canvas } from "./Canvas.js";
 
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
-const utils = document.querySelectorAll(".util")
-const utilsConfig = new UtilsConfig(utils)
+canvas.width = canvas.offsetWidth
+canvas.height = canvas.offsetHeight
+
+const drawingCanvas = new Canvas(canvas, ctx)
+
