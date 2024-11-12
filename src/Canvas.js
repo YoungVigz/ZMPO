@@ -2,6 +2,8 @@
 import { UtilsConfig } from "./UtilsConfig.js"
 import { Pen } from "./Pen.js"
 import { Eraser } from "./Eraser.js"
+import { Line } from "./Line.js"
+import { Ellipse } from "./Elipse.js"
 
 const utils = document.querySelectorAll(".util")
 const utilsConfig = new UtilsConfig(utils)
@@ -11,31 +13,34 @@ export class Canvas {
     ctx = null
     toolType = null
 
+    tools = []
+
     constructor(canvas, ctx) {
         this.ctx = ctx
         this.canvas = canvas
         this.ctx.lineCap = 'round'
 
-        this.pen = new Pen(canvas, ctx)
-        this.eraser = new Eraser(canvas, ctx)
+        this.tools.push(new Pen(canvas, ctx))
+        this.tools.push(new Eraser(canvas, ctx))
+        this.tools.push(new Line(canvas, ctx))
+        this.tools.push(new Ellipse(canvas, ctx))
 
         this.#changeToolType(utilsConfig.currentUtilType)
         utilsConfig.addObserver(this.handleUtilTypeChange.bind(this))
+
+        document.getElementById("clear-accept").addEventListener("click", () => this.clearCanvas())
     }
 
     #changeToolType(type) {
         this.toolType = type
 
-        if(type === 'pen') {
-            this.eraser.unbindDrawing()
-            this.pen.bindDrawing()
-        } else if(type === 'eraser') {
-            this.pen.unbindDrawing()
-            this.eraser.bindDrawing()
-        } else {
-            this.eraser.unbindDrawing()
-            this.pen.unbindDrawing()
-        }
+        this.tools.forEach(tool => {
+            if(tool.name === type) {
+                tool.bindDrawing()
+            } else {
+                tool.unbindDrawing()
+            }
+        })
     }
 
     /**
@@ -43,8 +48,11 @@ export class Canvas {
     * @param {string} newType - The new type of the active tool.
     */
     handleUtilTypeChange(newType) {
-        console.log("Current tool type:", newType)
         this.#changeToolType(newType)
     }
     
+
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    }
 }

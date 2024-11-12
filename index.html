@@ -23,7 +23,29 @@
             </div>
 
             <div class="settings" id="line">
-                line settings
+                <label for="line-size">Size:</label>
+                <input type="range" min="1" max="10" value="5" id="line-size">
+
+                <label for="line-color">Color:</label>
+                <input type="color" value="#000000" id="line-color">
+            </div>
+
+            <div class="settings" id="ellipse">
+                <label for="ellipse-outer-color">Outer color:</label>
+                <input type="color" value="#000000" id="ellipse-outer-color">
+
+                <label for="ellipse-inner-color">Inner color:</label>
+                <input type="color" value="#000000" id="ellipse-inner-color">
+            </div>
+
+            <div class="settings" id="eraser">
+                <label for="eraser-size">Size:</label>
+                <input type="range" min="1" max="10" value="5" id="eraser-size">
+            </div>
+
+            <div class="settings" id="clear">
+                <label for="clear-accept">Clear canvas:</label>
+                <input type="button" value="yes" id="clear-accept">
             </div>
         </div>
 
@@ -31,12 +53,23 @@
             <div class="util util-select" data-type="pen">
                 <i class="fa-solid fa-pen"></i>
             </div>
+
             <div class="util" data-type="line">
                 <i class="fa-solid fa-lines-leaning"></i>
             </div>
+
+            <div class="util" data-type="ellipse">
+                <i class="fa-regular fa-circle"></i>
+            </div>
+
             <div class="util" data-type="eraser">
                 <i class="fa-solid fa-eraser"></i>
             </div>
+
+            <div class="util" data-type="clear">
+                <i class="fa-solid fa-square-xmark"></i>
+            </div>
+
             <div class="util" data-type="record">
                 <i class="fa-solid fa-video"></i>
             </div>

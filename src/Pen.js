@@ -8,12 +8,6 @@ export class Pen extends DrawTool {
         super(canvas, 'pen')
 
         this.ctx = ctx
-
-        for(let setting of this.settingDOM) {
-            if(setting.nodeName == "INPUT") {
-                setting.addEventListener('change', this.changeSettings.bind(this))
-            }
-        }
     }
 
     changeSettings(e) {
@@ -22,7 +16,6 @@ export class Pen extends DrawTool {
         } else if (e.target.id == "pen-color") {
             this.penColor = e.target.value
         }
-
     }
 
     startDrawing(e) {

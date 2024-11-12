@@ -130,7 +130,7 @@ export class UtilsConfig {
             const key = event.key
 
             if (key >= '1' && key <= `${this.utils.length}`) {
-                const index = parseInt(key, 10) - 1  // Convert to 0-based index
+                const index = parseInt(key, 10) - 1
                 const util = this.utils[index].util
                 this.#changeUtil(util)
             }
