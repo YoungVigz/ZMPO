@@ -1,6 +1,6 @@
 import { Canvas } from "./Canvas.js";
 
-const canvas = document.querySelector("canvas")
+const canvas = document.getElementById("drawing-space")
 const ctx = canvas.getContext("2d")
 
 canvas.width = canvas.offsetWidth

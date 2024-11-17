@@ -20,27 +20,28 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
 }
 
 canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     width: 960px;
     height: 540px;
     background-color: white;
-    border-radius: 15px;
-    -webkit-box-shadow: 0px 35px 50px 0px rgba(66, 68, 90, 0.43);
-    -moz-box-shadow: 0px 35px 50px 0px rgba(66, 68, 90, 0.43);
-    box-shadow: 0px 35px 50px 0px rgba(66, 68, 90, 0.43);
 }
 
 .utils {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     border: 3px solid var(--secondary);
     border-radius: 5px;
     padding: 15px;
-    margin-bottom: 15px;
     counter-reset: count;
 }
 
@@ -102,14 +103,34 @@ i {
 }
 
 
+.record-on {
+    border: 1px solid red;
+}
+
+.record-on i {
+    color: red;
+}
+
+.record-on::after {
+    color: red;
+}
+
 .settings {
     display: none;
+
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .active-settings {
     display: block;
 }
 
+#drawing-hand {
+    z-index: -1;
+}
 
 .support {
     display: none;
