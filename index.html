@@ -70,18 +70,22 @@
                 <i class="fa-solid fa-square-xmark"></i>
             </div>
 
-            <div class="util" data-type="record">
+            <div class="util" data-type="record" id="recorder">
                 <i class="fa-solid fa-video"></i>
             </div>
+
         </div>
 
-        <canvas></canvas>
+        <canvas id="drawing-space"></canvas>
+        <canvas id="drawing-hand"></canvas>
+
     </div> 
 
     <div class="support">
         This app doesn't support devices which are less than 960px x 540px 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.12.10/umd/ffmpeg.min.js" integrity="sha512-j2FJMGBh+AdPWKCKDqIzH67vu4ps8OsNZqqetz8YSlbwy2ZwFTL+p6Hp1j17nL0B7IDl9E4zhPUXZKwz7MzjQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./src/index.js" type="module"></script>
 </body>
 </html>
