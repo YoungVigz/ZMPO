@@ -1,8 +1,8 @@
 import { DrawTool } from "./DrawTool.js"
 
 export class Eraser extends DrawTool {
-    penSize = 5
-    penColor = "#FFFFFF"
+    eraserSize = 5
+    eraserColor = "#FFFFFF"
 
     constructor(canvas, ctx) {
         super(canvas, 'eraser')
@@ -10,11 +10,15 @@ export class Eraser extends DrawTool {
         this.ctx = ctx
     }
 
+    changeSettings(e) {
+        this.eraserSize = e.target.value
+    }
+
     startDrawing(e) {
         this.isDrawing = true
         this.ctx.beginPath()
-        this.ctx.strokeStyle = this.penColor
-        this.ctx.lineWidth = this.penSize
+        this.ctx.strokeStyle = this.eraserColor
+        this.ctx.lineWidth = this.eraserSize
     }
 
     drawing(e) {

@@ -7,18 +7,28 @@ export class DrawTool {
     constructor(canvas, settingDOM) {
         this.canvas = canvas
 
+        this.name = settingDOM
+
         this.startDrawing = this.startDrawing.bind(this)
         this.drawing = this.drawing.bind(this)
         this.stopDrawing = this.stopDrawing.bind(this)
 
         this.settingDOM = document.getElementById(settingDOM) ? document.getElementById(settingDOM).children : undefined
+
+        for(let setting of this.settingDOM) {
+            if(setting.nodeName == "INPUT") {
+                setting.addEventListener('change', this.changeSettings.bind(this))
+            }
+        }
     }
+
+    changeSettings() {}
 
     startDrawing(e) {}
 
     drawing(e) {}
 
-    stopDrawing() {}
+    stopDrawing(e) {}
     
     bindDrawing() {
         this.canvas.addEventListener('mousedown', this.startDrawing)
