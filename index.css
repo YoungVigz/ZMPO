@@ -129,11 +129,10 @@ i {
 
 #drawing-hand {
     z-index: -1;
-    background-color: transparent;
+    background-color: #00FF00;
 }
 
 #drawing-space {
-    opacity: 0.5;
     background-color: white;
 }
 
