@@ -16,9 +16,6 @@ To set up the application locally for development, follow these steps:
 git clone https://github.com/YoungVigz/ZMPO
 cd ZMPO
 
-# Install live-server globally
-npm install -g live-server
-
 # Install project dependencies
 npm install
 
